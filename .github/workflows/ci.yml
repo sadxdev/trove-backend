@@ -28,8 +28,9 @@ jobs:
 
       - name: Publish JUnit test report
         if: always()
+        continue-on-error: true
         uses: dorny/test-reporter@v1
         with:
           name: JUnit Tests
-          path: target/surefire-reports/*.xml
+          path: target/surefire-reports/TEST-*.xml
           reporter: java-junit
