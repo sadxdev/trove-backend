@@ -1,7 +1,6 @@
-#### `backend/README.md`
-
-```md
 # Trove Market Backend
+
+![Backend CI](https://github.com/sadxdev/trove-backend/actions/workflows/ci.yml/badge.svg)
 
 Spring Boot-based backend service for the Trove Market Q-Commerce platform.
 
