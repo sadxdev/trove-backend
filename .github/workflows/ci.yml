@@ -23,13 +23,30 @@ jobs:
       - name: Grant execute permission for Maven wrapper
         run: chmod +x mvnw
 
-      - name: Run tests with Maven
+      - name: Run tests
         run: ./mvnw clean test
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-results
+          path: target/surefire-reports/TEST-*.xml
+
+  report:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download test results
+        uses: actions/download-artifact@v4
+        with:
+          name: junit-results
 
       - name: Publish JUnit test report
         if: always()
-        uses: dorny/test-reporter@v2
+        uses: dorny/test-reporter@v1
         with:
           name: JUnit Tests
-          path: target/surefire-reports/TEST-*.xml
+          path: ./*.xml
           reporter: java-junit
