@@ -23,5 +23,12 @@ jobs:
       - name: Grant execute permission for Maven wrapper
         run: chmod +x mvnw
 
-      - name: Build with Maven
+      - name: Run tests and build
         run: ./mvnw clean verify
+
+      - name: Upload JUnit test results
+        if: always() # always run even if previous step fails
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-test-results
+          path: target/surefire-reports/
