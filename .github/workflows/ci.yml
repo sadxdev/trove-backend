@@ -26,10 +26,10 @@ jobs:
       - name: Run tests and build
         run: ./mvnw clean verify
 
-      - name: Publish JUnit Test Report to GitHub UI
-        if: always() # Run even if tests fail
+      - name: Publish JUnit Test Report
         uses: dorny/test-reporter@v1
+        if: always()
         with:
-          name: JUnit Tests
-          path: target/surefire-reports/*.xml
+          name: JUnit Report
+          path: target/surefire-reports/TEST-*.xml
           reporter: java-junit
