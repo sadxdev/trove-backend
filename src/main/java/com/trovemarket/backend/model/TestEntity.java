@@ -5,8 +5,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class TestEntity {
-    @Id
-    private Long id;
+    @Id private Long id;
     private String name;
 
     // getters and setters

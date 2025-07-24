@@ -10,9 +10,7 @@ public class TestExceptionController {
 
     @GetMapping("/bad-request")
     public ResponseEntity<String> badRequest() {
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body("Bad Request triggered manually");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad Request triggered manually");
     }
 
     @GetMapping("/exception")
